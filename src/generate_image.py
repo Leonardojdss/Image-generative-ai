@@ -22,7 +22,7 @@ def text_to_image(prompt, number_of_images):
 
     date = datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
     path_name = f"src/output/{date}"
-    os.mkdir(path_name)
+    os.makedirs(path_name, exist_ok=True)
 
     for i, image_data in enumerate(img.data):
         image_bytes = base64.b64decode(image_data.b64_json)
@@ -48,7 +48,7 @@ def image_and_text_to_image(prompt, image_path_input, number_of_images):
 
     datetime_now = datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
     path_name = f"src/output/{datetime_now}"
-    os.mkdir(path_name)
+    os.makedirs(path_name, exist_ok=True)
 
     image_base64 = result.data[0].b64_json
     image_bytes = base64.b64decode(image_base64)
